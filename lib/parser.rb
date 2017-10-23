@@ -1,16 +1,10 @@
-require 'command.rb'
+require './lib/command'
 
 class Parser
-  def initialize
+  def initialize; end
 
-  end
-
-  def parse(filename)
-    File.open(filename, "r") do |f|
-      f.each_line do |line|
-        cmd = Command.new(line)
-        cmd.execute()
-      end
-    end
+  def self.parse(line)
+    tokens = line.split(" ")
+    Command.new(tokens[0], tokens[1..-1])
   end
 end

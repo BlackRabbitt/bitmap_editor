@@ -1,2 +1,0 @@
-class CommandTest < ApplicationTest
-end
