@@ -11,10 +11,10 @@ class CommandsTest < MiniTest::Test
 
   def test_if_can_append_command_to_commands
     commands = Commands.new
-    assert commands.size, 0
+    assert 0, commands.size
 
     commands.append(Command.new("I", ["2", "4"]))
-    assert commands.size, 1
+    assert 1, commands.size
   end
 
   def test_if_will_append_only_command
@@ -23,12 +23,12 @@ class CommandsTest < MiniTest::Test
   end
 
   def test_if_commands_executes_in_order
-    commands = setup_commands
-    assert commands.execute
+    commands = setup_test_commands_1
+    assert commands.execute, "Commands Execution Test Failed."
   end
 
   private
-  def setup_commands
+  def setup_test_commands_1
     commands = Commands.new
     commands.append(Command.new("I", ["2", "4"]))
     commands.append(Command.new("L", ["1", "3", "A"]))

@@ -1,7 +1,7 @@
 require 'fileutils'
 
 require 'minitest/autorun'
-require './lib/application.rb'
+require './lib/application'
 
 class ApplicationTest < MiniTest::Test
   def test_if_exists
@@ -19,6 +19,6 @@ class ApplicationTest < MiniTest::Test
     app.run()
 
     result = FileUtils.compare_file("test/data/1.expected.txt", "test/data/1.output.txt")
-    assert result
+    assert result, "Expected bitmap and output bitmap didn't matched."
   end
 end

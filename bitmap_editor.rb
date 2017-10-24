@@ -1,4 +1,4 @@
-require './lib/application.rb'
+require './lib/application'
 
 args = Hash[ ARGV.flat_map{|s| s.scan(/-?([^=\s]+)(?:=(\S+))?/) } ]
 

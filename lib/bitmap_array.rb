@@ -12,15 +12,19 @@ class BitmapArray
   end
 
   def cols
-    @matrix[0].length
+    if rows == 0
+      0
+    else
+      @matrix.values.first.length
+    end
   end
 
   def print
-    for i in 0...rows
+    for i in 1..rows
       puts @matrix[i]
     end
   end
 
-  alias_method :length, :rows
-  alias_method :breadth, :cols
+  alias_method :height, :rows
+  alias_method :length, :cols
 end

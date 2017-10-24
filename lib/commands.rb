@@ -1,6 +1,9 @@
-require './lib/command'
 require './lib/bitmap_array'
+
+require './lib/command'
 require './lib/commands/create'
+require './lib/commands/set_pixel'
+
 require './lib/bitmap_exception'
 
 class Commands
@@ -22,10 +25,12 @@ class Commands
       raise "[line:#{line_number+1}]:: #{cmd.to_string} not defined" unless Object.const_defined?(cmd.klass)
 
       command = Object.const_get(cmd.klass).new(cmd.args)
-      err = command.execute_on(@output)
-      if err.is_a?(BitmapException) && err.level == BitmapException::ERROR
-        raise "[line:#{line_number+1}]:: #{err.error}"
+      unless command.err.nil?
+        puts "ERROR: [line:#{line_number+1}]:: #{command.err.error}"
+        raise
       end
+
+      err = command.execute_on(@output)
       if err.is_a?(BitmapException) && err.level == BitmapException::WARN
         puts "WARN: [line:#{line_number+1}]:: #{err.error}"
       end
