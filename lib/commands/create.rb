@@ -13,12 +13,18 @@ class Create
 
   # execute command on bitmap_array_matrix with args
   def execute_on(bitmap_array)
+    err = BitmapException.new(BitmapException::WARN, "Create command called twice.") if bitmap_array.length > 0
+    unless err.nil?
+      return err
+    end
+
     for i in 1..@height
       for j in 1..@length
         bitmap_array[i][j]="0"
       end
     end
-    return BitmapException.new(BitmapException::WARN, "Create command called twice.") unless bitmap_array.length > 0
+
+    nil
   end
 
   private

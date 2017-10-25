@@ -20,7 +20,7 @@ class CreateTest < MiniTest::Test
     assert nil != cmd.err, "err object should exist if the arguments is smaller than 1"
 
     cmd = Create.new([1, 255])
-    assert nil != cmd.err, "err object should exist if the arguments is smaller than 250"
+    assert nil != cmd.err, "err object should exist if the arguments is greater than 250"
 
     cmd = Create.new([1, 3, 4])
     assert nil != cmd.err, "err object should exist if it has extra arguments."
@@ -32,11 +32,16 @@ class CreateTest < MiniTest::Test
   def test_if_it_works
     bitmap_array = BitmapArray.new
     cmd = Create.new([4, 6])
-    cmd.execute_on(bitmap_array)
+
+    err = cmd.execute_on(bitmap_array)
+    assert_nil err, "Error must be nil if it is called once."
 
     assert 4, bitmap_array.length
     assert 6, bitmap_array.height
-
     assert "0", bitmap_array[3][2]
+
+    err = cmd.execute_on(bitmap_array)
+    assert nil != err, "err object should exist if create is called multiple times."
+    assert BitmapException::WARN == err.level
   end
 end
