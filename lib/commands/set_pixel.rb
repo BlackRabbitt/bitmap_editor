@@ -20,7 +20,7 @@ class SetPixel
     err = BitmapException.new(BitmapException::ERROR, "Pixel out-of-bound error.") if @x > bitmap_array.length || @y > bitmap_array.height
     return err unless err.nil?
 
-    bitmap_array[@x][@y] = @colour
+    bitmap_array[@y][@x] = @colour
 
     nil
   end

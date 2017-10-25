@@ -1,3 +1,5 @@
+# two-dimensional array where 1st dimension is height and second dimension is length
+# for example pixel(1, 2) is represented as bitmap_array[2][1] <= height first and then length
 class BitmapArray
   def initialize
     @matrix = {}

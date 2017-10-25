@@ -36,9 +36,11 @@ class CreateTest < MiniTest::Test
     err = cmd.execute_on(bitmap_array)
     assert_nil err, "Error must be nil if it is called once."
 
-    assert 4, bitmap_array.length
-    assert 6, bitmap_array.height
-    assert "0", bitmap_array[3][2]
+    assert_equal 4, bitmap_array.length
+    assert_equal 6, bitmap_array.height
+    assert_equal "0", bitmap_array[3][2]
+    assert_equal "0", bitmap_array[6][4], "boundary condition failed"
+    assert_nil bitmap_array[4][6], "boundary condition failed"
 
     err = cmd.execute_on(bitmap_array)
     assert nil != err, "err object should exist if create is called multiple times."

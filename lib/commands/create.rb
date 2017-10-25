@@ -16,9 +16,9 @@ class Create
     err = BitmapException.new(BitmapException::WARN, "Create command called twice.") if bitmap_array.length > 0
     return err unless err.nil?
 
-    for i in 1..@height
-      for j in 1..@length
-        bitmap_array[i][j]="0"
+    for i in 1..@length
+      for j in 1..@height
+        bitmap_array[j][i]="0"
       end
     end
 
