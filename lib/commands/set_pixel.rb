@@ -2,7 +2,6 @@ require './lib/bitmap_array'
 require './lib/bitmap_exception'
 
 require './utils/string'
-require 'pry'
 
 class SetPixel
   attr_reader :err
@@ -34,7 +33,7 @@ class SetPixel
     err = BitmapException.new(BitmapException::ERROR, "Expected to have 3 arguments but instead got #{args.length}") if args.length != 3
     return nil, nil, nil, err unless err.nil?
 
-    invalid = ((!is_integer(args[0]) || (args[0].to_i < 1 || args[0].to_i > 250)) || (!is_integer(args[1]) || (args[1].to_i < 1 || args[1].to_i > 250)) ||is_integer(args[2]))
+    invalid = ((!is_integer?(args[0]) || (args[0].to_i < 1 || args[0].to_i > 250)) || (!is_integer?(args[1]) || (args[1].to_i < 1 || args[1].to_i > 250)) || !is_colour?(args[2]))
     err = BitmapException.new(BitmapException::ERROR, "Invalid argument type. Arguments should be (integer, integer, string) where 1<integer<250") if invalid
     return nil, nil, nil, err unless err.nil?
 
