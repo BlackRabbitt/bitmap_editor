@@ -14,7 +14,6 @@ class Application
         commands.append(Parser.parse(line))
       end
       commands.execute
-      commands.output
     end
   end
 end

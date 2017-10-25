@@ -31,10 +31,12 @@ class Commands
       end
 
       err = command.execute_on(@output)
-      if err.is_a?(BitmapException) && err.level == BitmapException::WARN
-        puts "WARN: [line:#{line_number+1}]:: #{err.error}"
+      if err.is_a?(BitmapException)
+        puts "#{err.level}: [line:#{line_number+1}]:: #{err.error}"
+        raise if err.level == BitmapException::ERROR
       end
     end
+    true
   end
 
   def size
