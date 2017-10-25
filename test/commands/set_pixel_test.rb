@@ -13,16 +13,16 @@ class SetPixelTest < MiniTest::Test
 
   def test_if_it_handles_invalid_arguments
     cmd = SetPixel.new("This should not valid")
-    assert nil != cmd.err, "err object should exist for non-array parameter create create command."
+    assert nil != cmd.err, "err object should exist for non-array parameter"
 
     cmd = SetPixel.new(["A", "B", "A"])
-    assert nil != cmd.err, "err object should exist for 1 non-permitted arguments for create command"
+    assert nil != cmd.err, "err object should exist for 1 non-permitted arguments"
 
     cmd = SetPixel.new(["2", "4", "2"])
-    assert nil != cmd.err, "err object should exist for 2 non-permitted arguments for create command"
+    assert nil != cmd.err, "err object should exist for 2 non-permitted arguments"
 
     cmd = SetPixel.new(["A", "4", "A"])
-    assert nil != cmd.err, "err object should exist for 3 non-permitted arguments for create command"
+    assert nil != cmd.err, "err object should exist for 3 non-permitted arguments"
 
     cmd = SetPixel.new(["0", "0", "A"])
     assert nil != cmd.err, "err object should exist if the arguments is smaller than 1"

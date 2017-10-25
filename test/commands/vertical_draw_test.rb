@@ -13,16 +13,16 @@ class VerticalDrawTest < MiniTest::Test
 
   def test_if_it_handles_invalid_arguments
     cmd = VerticalDraw.new("This should not valid")
-    assert nil != cmd.err, "err object should exist for non-array parameter create create command."
+    assert nil != cmd.err, "err object should exist for non-array parameter."
 
     cmd = VerticalDraw.new(["A", "1", "B", "A"])
-    assert nil != cmd.err, "err object should exist for 1 non-permitted arguments for create command"
+    assert nil != cmd.err, "err object should exist for 1 non-permitted arguments"
 
     cmd = VerticalDraw.new(["2", "4", "B", "2"])
-    assert nil != cmd.err, "err object should exist for 2 non-permitted arguments for create command"
+    assert nil != cmd.err, "err object should exist for 2 non-permitted arguments"
 
-    cmd = VerticalDraw.new(["2", "4", "3", "A"])
-    assert nil != cmd.err, "err object should exist for 3 non-permitted arguments for create command"
+    cmd = VerticalDraw.new(["2", "4", "3", "1"])
+    assert nil != cmd.err, "err object should exist for 3 non-permitted arguments"
 
     cmd = VerticalDraw.new(["0", "2", "3", "A"])
     assert nil != cmd.err, "err object should exist if the arguments is smaller than 1"
@@ -33,7 +33,7 @@ class VerticalDrawTest < MiniTest::Test
     cmd = VerticalDraw.new(["1", "3", "4", "X", "Y"])
     assert nil != cmd.err, "err object should exist if it has extra arguments."
 
-    cmd = VerticalDraw.new(["1", "4", "3", "X", "Y"])
+    cmd = VerticalDraw.new(["1", "4", "3", "X"])
     assert nil != cmd.err, "err object should exist if y2 < y1."
 
     cmd = VerticalDraw.new(["250", "1", "3", "D"])
