@@ -44,7 +44,7 @@ class VerticalDrawTest < MiniTest::Test
     bitmap_array = BitmapArray.new
     cmd = VerticalDraw.new(["4", "2", "3", "A"])
     err = cmd.execute_on(bitmap_array)
-    assert nil != err, "err object should exist if set_pixel is called in empty bitmap-array. Create should be called first."
+    assert nil != err, "err object should exist if vertical draw is called in empty bitmap-array. Create should be called first."
 
     cmd = Create.new(["5", "6"])
     cmd.execute_on(bitmap_array)
@@ -57,7 +57,7 @@ class VerticalDrawTest < MiniTest::Test
     assert_equal "A", bitmap_array[3][2], "Pixel (2,3) must be coloured with A"
     assert_equal "A", bitmap_array[4][2], "Pixel (2,4) must be coloured with A"
     assert_equal "A", bitmap_array[5][2], "Pixel (2,5) must be coloured with A"
-    assert_equal "0", bitmap_array[6][2], "Pixel (2,6) must be coloured with 0"
-    assert_equal "0", bitmap_array[2][1], "Pixel (1,2) must have default 0"
+    assert_equal "O", bitmap_array[6][2], "Pixel (2,6) must be coloured with O"
+    assert_equal "O", bitmap_array[2][1], "Pixel (1,2) must have default O"
   end
 end

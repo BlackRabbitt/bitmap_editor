@@ -44,7 +44,7 @@ class HorizontalDrawTest < MiniTest::Test
     bitmap_array = BitmapArray.new
     cmd = HorizontalDraw.new(["4", "2", "3", "A"])
     err = cmd.execute_on(bitmap_array)
-    assert nil != err, "err object should exist if set_pixel is called in empty bitmap-array. Create should be called first."
+    assert nil != err, "err object should exist if horizontal draw is called in empty bitmap-array. Create should be called first."
 
     cmd = Create.new(["5", "6"])
     cmd.execute_on(bitmap_array)
@@ -58,6 +58,6 @@ class HorizontalDrawTest < MiniTest::Test
     assert_equal "A", bitmap_array[2][4], "Pixel (4,2) must be coloured with A"
     assert_equal "A", bitmap_array[2][5], "Pixel (5,2) must be coloured with A"
     assert_nil bitmap_array[2][6], "Pixel (6,2) is nil"
-    assert_equal "0", bitmap_array[1][3], "Pixel (1,3) must have default 0"
+    assert_equal "O", bitmap_array[1][3], "Pixel (1,3) must have default O"
   end
 end

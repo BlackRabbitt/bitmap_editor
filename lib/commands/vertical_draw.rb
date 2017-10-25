@@ -13,7 +13,7 @@ class VerticalDraw
   end
 
   def execute_on(bitmap_array)
-    err = BitmapException.new(BitmapException::ERROR, "Couldn't call SetPixel in empty bitmap. Use create() command to create bitmap.") if bitmap_array.length == 0
+    err = BitmapException.new(BitmapException::ERROR, "Couldn't call VerticalDraw command before create().") if bitmap_array.length == 0
     return err unless err.nil?
 
     err = BitmapException.new(BitmapException::ERROR, "Pixel out-of-bound error.") if @x > bitmap_array.length || @y1 > bitmap_array.height || @y2 > bitmap_array.height

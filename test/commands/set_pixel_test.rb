@@ -33,6 +33,9 @@ class SetPixelTest < MiniTest::Test
     cmd = SetPixel.new(["1", "3", "4", "X"])
     assert nil != cmd.err, "err object should exist if it has extra arguments."
 
+    cmd = SetPixel.new(["250", "1", "d"])
+    assert nil != cmd.err, "Non capital letter as colour not accepted"
+
     cmd = SetPixel.new(["250", "1", "D"])
     assert_nil cmd.err, "This is a valid arguments."
   end
@@ -50,7 +53,7 @@ class SetPixelTest < MiniTest::Test
 
     assert_nil err, "err object must be nil"
     assert_equal "A", bitmap_array[1][2], "Pixel (2,1) must be coloured with A"
-    assert_equal "0", bitmap_array[2][1], "Pixel (1,2) must have default 0"
+    assert_equal "O", bitmap_array[2][1], "Pixel (1,2) must have default O"
 
     cmd = SetPixel.new(["4", "1", "B"])
     err = cmd.execute_on(bitmap_array)

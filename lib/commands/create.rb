@@ -18,7 +18,7 @@ class Create
 
     for i in 1..@length
       for j in 1..@height
-        bitmap_array[j][i]="0"
+        bitmap_array[j][i]="O"
       end
     end
 
@@ -34,7 +34,7 @@ class Create
     return nil, nil, err unless err.nil?
 
     args.each_with_index do |a, i|
-      err = BitmapException.new(BitmapException::ERROR, "Invalid #{a}. Position-#{i+1} argument must be integer and should range from 1-250") if (!is_integer?(a) && (a.to_i < 1 || a.to_i > 250))
+      err = BitmapException.new(BitmapException::ERROR, "Invalid #{a}. Position-#{i+1} argument must be integer and should range from 1-250") if (!is_integer?(a) || (a.to_i < 1 || a.to_i > 250))
       return nil, nil, err unless err.nil?
     end
 

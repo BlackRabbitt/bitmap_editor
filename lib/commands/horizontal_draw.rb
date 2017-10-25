@@ -13,7 +13,7 @@ class HorizontalDraw
   end
 
   def execute_on(bitmap_array)
-    err = BitmapException.new(BitmapException::ERROR, "Couldn't call SetPixel in empty bitmap. Use create() command to create bitmap.") if bitmap_array.length == 0
+    err = BitmapException.new(BitmapException::ERROR, "Couldn't call HorizontalDraw command before create().") if bitmap_array.length == 0
     return err unless err.nil?
 
     err = BitmapException.new(BitmapException::ERROR, "Pixel out-of-bound error.") if @x1 > bitmap_array.length || @x2 > bitmap_array.length || @y > bitmap_array.height
