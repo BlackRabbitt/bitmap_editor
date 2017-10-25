@@ -51,5 +51,13 @@ class SetPixelTest < MiniTest::Test
     assert_nil err, "err object must be nil"
     assert_equal "A", bitmap_array[2][1], "Pixel (2,1) must be coloured with A"
     assert_equal "0", bitmap_array[1][2], "Pixel (1,2) must have default 0"
+
+    cmd = SetPixel.new(["4", "1", "B"])
+    err = cmd.execute_on(bitmap_array)
+    assert nil != err, "err object should exist for pixel out-of-bound error. Trying to set colour in pixel that doesnot exist"
+
+    cmd = SetPixel.new(["2", "4", "B"])
+    err = cmd.execute_on(bitmap_array)
+    assert nil != err, "err object should exist for pixel out-of-bound error. Trying to set colour in pixel that doesnot exist"
   end
 end
