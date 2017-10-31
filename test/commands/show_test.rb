@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 
 require './lib/commands/show'
+require './lib/commands/create'
 require './lib/commands/horizontal_draw'
 
 require './lib/bitmap_array'

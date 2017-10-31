@@ -24,19 +24,16 @@ class Commands
 
   def execute
     @list.each_with_index do |cmd, line_number|
-      raise "[line:#{line_number+1}]:: invalid command: #{cmd.to_string}" if cmd.klass.nil?
-      raise "[line:#{line_number+1}]:: #{cmd.to_string} not defined" unless Object.const_defined?(cmd.klass)
+      raise_error "Error: [line:#{line_number+1}]:: Invalid command: #{cmd.to_string}" if cmd.klass.nil?
+      raise_error "Error: [line:#{line_number+1}]:: #{cmd.to_string} not defined" unless Object.const_defined?(cmd.klass)
 
       command = Object.const_get(cmd.klass).new(cmd.args)
-      unless command.err.nil?
-        puts "ERROR: [line:#{line_number+1}]:: #{command.err.error}"
-        raise
-      end
+      raise_error "Error: [line:#{line_number+1}]:: #{command.err.error}" unless command.err.nil?
 
       err = command.execute_on(@output)
       if err.is_a?(BitmapException)
         puts "#{err.level}: [line:#{line_number+1}]:: #{err.error}"
-        raise if err.level == BitmapException::ERROR
+        exit if err.level == BitmapException::ERROR
       end
     end
     true
@@ -44,5 +41,11 @@ class Commands
 
   def size
     @list.size
+  end
+
+  private
+  def raise_error(msg)
+    puts msg
+    exit
   end
 end
