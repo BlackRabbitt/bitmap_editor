@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 require './lib/application'
 
 args = Hash[ ARGV.flat_map{|s| s.scan(/-?([^=\s]+)(?:=(\S+))?/) } ]

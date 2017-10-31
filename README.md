@@ -4,11 +4,11 @@
 
 ### Running Program
 ```
-ruby bitmap_editor.rb -f=<file_path>
+./bitmap_editor.rb -f=examples/1.txt
 ```
 ####Example:
 ```
-ruby bitmap_editor.rb -f='data/1.txt'
+./bitmap_editor.rb -f=examples/1.txt
 ```
 
 ### Running Test
