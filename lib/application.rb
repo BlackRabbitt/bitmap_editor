@@ -3,12 +3,13 @@ require './lib/commands'
 
 class Application
   def initialize(filepath)
-    raise "No input file error" if filepath.nil?
-    @filepath = filepath
+    return puts "No input file error" if filepath.nil?
+    @file = filepath
   end
 
   def run()
-    File.open(@filepath, "r") do |f|
+    return puts "please provide correct file" if @file.nil? || !File.exists?(@file)
+    File.open(@file, "r") do |f|
       commands = Commands.new
       f.each_line do |line|
         commands.append(Parser.parse(line))

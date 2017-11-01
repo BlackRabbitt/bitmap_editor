@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require './lib/application'
+
+app = Application.new(ARGV.first)
+app.run()
