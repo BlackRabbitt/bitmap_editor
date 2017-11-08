@@ -8,7 +8,7 @@ class Application
   end
 
   def run()
-    return puts "please provide correct file" if @file.nil? || !File.exists?(@file)
+    return puts "please provide correct file" if @file.nil? || !File.exist?(@file)
     File.open(@file, "r") do |f|
       commands = Commands.new
       f.each_line do |line|
