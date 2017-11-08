@@ -21,6 +21,14 @@ class BitmapArray
     end
   end
 
+  def color_of(x, y)
+    self[y][x]
+  end
+
+  def index_out_of_range?(x, y)
+    x > self.length || x < 0 || y > self.height || y < 0
+  end
+
   def print
     for i in 1..rows
       puts @matrix[i]

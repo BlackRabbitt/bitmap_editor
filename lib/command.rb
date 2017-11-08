@@ -13,7 +13,8 @@ class Command
       L: "SetPixel",
       V: "VerticalDraw",
       H: "HorizontalDraw",
-      S: "Show"
+      S: "Show",
+      F: "Fill"
     }[@cmd.to_sym]
   end
 

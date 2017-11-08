@@ -7,6 +7,7 @@ require './lib/commands/set_pixel'
 require './lib/commands/vertical_draw'
 require './lib/commands/horizontal_draw'
 require './lib/commands/show'
+require './lib/commands/fill'
 
 require './lib/bitmap_exception'
 
